@@ -1,5 +1,5 @@
 body {
-    background: #051923;
+    background: linear-gradient(to right, #051923, #003554); 
     color: #E0E1DD;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
@@ -7,16 +7,24 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden; 
 }
 .app-container {
     background: #003554;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     width: 90%;
     max-width: 400px;
     text-align: center;
+    animation: fadeIn 0.8s ease-out;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 h1 { color: #00A6FB; }
 #search-form { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
 #city-input {
@@ -33,3 +41,106 @@ h1 { color: #00A6FB; }
 .weather-info { margin-top: 1.5rem; min-height: 150px; }
 .weather-info .temp { font-size: 3rem; font-weight: bold; margin: 0.5rem 0; }
 .error { color: #ff4d4d; font-weight: bold; }
+
+.weather-info {
+    margin-top: 1.5rem;
+    min-height: 150px;
+    background: #004B73; 
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.weather-info img {
+    width: 100px; 
+    height: 100px;
+    margin-bottom: 0.5rem;
+}
+
+.weather-info p {
+    margin: 0.3rem 0; 
+}
+
+.weather-info .description {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize; 
+}
+
+.weather-info .humidity {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* เพิ่มธีมกลางวัน */
+body.day-theme {
+    background: linear-gradient(to right, #87CEEB, #ADD8E6); /* ฟ้าอ่อนๆ */
+    color: #333; /* สีตัวอักษรเข้ม */
+}
+
+body.day-theme .app-container {
+    background: #FFF;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.day-theme h1 {
+    color: #00A6FB;
+}
+
+body.day-theme #city-input {
+    background: #F0F8FF;
+    border: 1px solid #ADD8E6;
+    color: #333;
+}
+
+body.day-theme #search-form button {
+    background-color: #00A6FB;
+    color: #FFF;
+}
+body.day-theme #search-form button:hover {
+    background-color: #0582CA;
+}
+
+body.day-theme .weather-info {
+    background: #E0F2F7;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ธีมกลางคืน (ใช้ค่าเดิมของคุณ) */
+body.night-theme {
+    background: linear-gradient(to right, #051923, #003554);
+    color: #E0E1DD;
+}
+
+body.night-theme .app-container {
+    background: #003554;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.night-theme h1 {
+    color: #00A6FB;
+}
+
+body.night-theme #city-input {
+    background: #051923;
+    border: 1px solid #006494;
+    color: #E0E1DD;
+}
+
+body.night-theme #search-form button {
+    background-color: #00A6FB;
+    color: #051923;
+}
+body.night-theme #search-form button:hover {
+    background-color: #0582CA;
+}
+
+body.night-theme .weather-info {
+    background: #004B73;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
